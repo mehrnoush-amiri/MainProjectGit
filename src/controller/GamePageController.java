@@ -85,6 +85,7 @@ public class GamePageController implements Initializable {
                     final int fi = i;
                     final int fj = j;
                     cell.setOnAction(event1 -> {
+                        //check if cell is suitable for being selected
                         if (!cell.isDisabled() && !cell.isChoosed()){
                             //check is turn blue
                             if (isBlue()){
@@ -101,12 +102,38 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
+                                if (isTurn(cells, false)) {
+                                    setBlue(false);
+                                    setVisiable(cells, isBlue());
+                                } else {
+                                    setBlue(true);
+                                    setVisiable(cells, isBlue());
+                                }
                             }
                             //check is turn red
                             else {
+                                cell.setChoosed(true);
+                                cell.setBlue(false);
+                                cell.setStyle("-fx-background-color: red");
+                                cells[fi][fj] = cell;
+                                betweenColorRowDown(fi, fj, isBlue(), cells);
+                                betweenColorRowUp(fi, fj, isBlue(), cells);
+                                betweenColorColLeft(fi, fj, isBlue(), cells);
+                                betweenColorColRight(fi, fj, isBlue(), cells);
+                                betweenColorDownRight(fi, fj, isBlue(), cells);
+                                betweenColorDownLeft(fi, fj, isBlue(), cells);
+                                betweenColorUpLeft(fi, fj, isBlue(), cells);
+                                betweenColorUpRight(fi, fj, isBlue(), cells);
+                                changeColor(cells);
+                                if (isTurn(cells, true)) {
+                                    setBlue(true);
+                                    setVisiable(cells, isBlue());
+                                } else {
+                                    setBlue(false);
+                                    setVisiable(cells, isBlue());
 
+                                }
                             }
-
                         }
 
 
