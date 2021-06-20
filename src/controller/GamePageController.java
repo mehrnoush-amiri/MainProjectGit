@@ -58,7 +58,7 @@ public class GamePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Cell[][] cells=new Cell[8][8];
-
+//build cells in vbox
         for (int i=0 ; i<8 ; i++){
             HBox hBox = new HBox (  );
             hBox.setAlignment (Pos.CENTER);
@@ -85,6 +85,33 @@ public class GamePageController implements Initializable {
                     final int fi = i;
                     final int fj = j;
                     cell.setOnAction(event1 -> {
+                        if (!cell.isDisabled() && !cell.isChoosed()){
+                            //check is turn blue
+                            if (isBlue()){
+                                cell.setChoosed(true);
+                                cell.setBlue(true);
+                                cell.setStyle("-fx-background-color: darkblue");
+                                cells[fi][fj] = cell;
+                                betweenColorRowDown(fi, fj, isBlue(), cells);
+                                betweenColorRowUp(fi, fj, isBlue(), cells);
+                                betweenColorColLeft(fi, fj, isBlue(), cells);
+                                betweenColorColRight(fi, fj, isBlue(), cells);
+                                betweenColorDownRight(fi, fj, isBlue(), cells);
+                                betweenColorDownLeft(fi, fj, isBlue(), cells);
+                                betweenColorUpLeft(fi, fj, isBlue(), cells);
+                                betweenColorUpRight(fi, fj, isBlue(), cells);
+                                changeColor(cells);
+                            }
+                            //check is turn red
+                            else {
+
+                            }
+
+                        }
+
+
+                        //check if is fertig
+
 
                     });
                 }
@@ -624,5 +651,174 @@ public class GamePageController implements Initializable {
         }
 
     }
+
+    //change color of cells
+    private void changeColor(Cell[][] cells){
+        for (int i=0;i<cells.length;i++){
+            for (int j=0;j< cells.length;j++){
+                if (cells[i][j].isChoosed() && cells[i][j].isBlue()){
+                    cells[i][j].setStyle("-fx-background-color: darkblue");
+                    cells[i][j].setDisable(false);
+                }
+                if (cells[i][j].isChoosed() && !cells[i][j].isBlue()){
+                    cells[i][j].setStyle("-fx-background-color: red");
+                    cells[i][j].setDisable(false);
+                }
+                if (!cells[i][j].isChoosed()){
+                    cells[i][j].setDisable(true);
+                }
+            }
+        }
+    }
+    //change color boolean in 8 side
+    private void betweenColorRowDown(int i,int j,boolean isBlue,Cell[][] cells){
+        int index=-1;
+        for (int l=i+1;l<8;l++){
+            if (cells[l][j].isChoosed() && cells[l][j].isBlue()==isBlue){
+                index=l;
+            }
+        }
+        if (index>-1){
+            for (int l=i+1;l<index;l++){
+                cells[l][j].setBlue(isBlue);
+            }
+        }
+    }
+
+    private void betweenColorRowUp(int i,int j,boolean isBlue,Cell[][] cells){
+        int index=-1;
+        for (int l=i-1;l>=0;l--){
+            if (cells[l][j].isChoosed() && cells[l][j].isBlue()==isBlue){
+                index=l;
+            }
+        }
+        if (index>-1){
+            for (int l=i-1;l>index;l--){
+                cells[l][j].setBlue(isBlue);
+            }
+        }
+    }
+
+    private void betweenColorColLeft(int i,int j,boolean isBlue,Cell[][] cells){
+        int index=-1;
+        for (int l=j-1;l>=0;l--){
+            if (cells[i][l].isChoosed() && cells[i][l].isBlue()==isBlue){
+                index=l;
+            }
+        }
+        if (index>-1){
+            for (int l=j-1;l>index;l--){
+                cells[i][l].setBlue(isBlue);
+            }
+        }
+    }
+
+    private void betweenColorColRight(int i,int j,boolean isBlue,Cell[][] cells){
+        int index=-1;
+        for (int l=j+1;l<8;l++){
+            if (cells[i][l].isChoosed() && cells[i][l].isBlue()==isBlue){
+                index=l;
+            }
+        }
+        if (index>-1){
+            for (int l=j+1;l<index;l++){
+                cells[i][l].setBlue(isBlue);
+            }
+        }
+    }
+
+    private void betweenColorDownRight(int i,int j,boolean isBlue,Cell[][] cells){
+        int indexi=-1,indexj=-1;
+        int changei=i,changej=j;
+
+        for (int l=1;changei<7 && changej<7;l++){
+            changei++;
+            changej++;
+            if (cells[changei][changej].isChoosed() && cells[changei][changej].isBlue()==isBlue){
+                indexi=changei;
+                indexj=changej;
+                break;
+            }
+        }
+        if (indexi!=-1  && indexj!=-1){
+            while(i<changei && j<changej){
+                i++;
+                j++;
+                cells[i][j].setBlue(isBlue);
+            }
+
+        }
+    }
+
+    private void betweenColorDownLeft(int i,int j,boolean isBlue,Cell[][] cells){
+        int indexi=8,indexj=-1;
+        int changei=i,changej=j;
+
+        for (int l=1;changei<7 && changej>0;l++){
+            changei++;
+            changej--;
+            if (cells[changei][changej].isChoosed() && cells[changei][changej].isBlue()==isBlue){
+                indexi=changei;
+                indexj=changej;
+                break;
+            }
+        }
+        if (indexi!=8  && indexj!=-1){
+            while(i<changei && j>changej){
+                i++;
+                j--;
+                cells[i][j].setBlue(isBlue);
+            }
+
+        }
+    }
+
+    private void betweenColorUpRight(int i,int j,boolean isBlue,Cell[][] cells){
+        int indexi=-1,indexj=8;
+        int changei=i,changej=j;
+
+        for (int l=1;changei>0 && changej<7;l++){
+            changei--;
+            changej++;
+            if (cells[changei][changej].isChoosed() && cells[changei][changej].isBlue()==isBlue){
+                indexi=changei;
+                indexj=changej;
+                break;
+            }
+        }
+        if (indexi>-1  && indexj<8){
+            while(i>changei && j<changej){
+                i--;
+                j++;
+                cells[i][j].setBlue(isBlue);
+            }
+
+        }
+    }
+
+    private void betweenColorUpLeft(int i,int j,boolean isBlue,Cell[][] cells){
+        int indexi=8,indexj=8;
+        int changei=i,changej=j;
+
+        for (int l=1;changei>0 && changej>0;l++){
+            changei--;
+            changej--;
+            if (cells[changei][changej].isChoosed() && cells[changei][changej].isBlue()==isBlue){
+                indexi=changei;
+                indexj=changej;
+                break;
+            }
+        }
+        if (indexi!=8  && indexj!=8){
+            while(i>changei && j>changej){
+                i--;
+                j--;
+                cells[i][j].setBlue(isBlue);
+            }
+
+        }
+    }
+
+
 
 }
