@@ -1,12 +1,10 @@
 package controller;
-
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Cell;
@@ -39,7 +37,11 @@ public class GamePageController implements Initializable {
     private Hyperlink newGameBTN;
 
     @FXML
-    private VBox vboxGame;
+    private VBox gameStage;
+
+    @FXML
+    private Hyperlink player1BTN;
+
 
 
     private boolean isBlue;
@@ -54,18 +56,24 @@ public class GamePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         Cell[][] cells=new Cell[8][8];
 
-
-
-
-
-
+        for (int i=0 ; i<8 ; i++){
+            HBox hBox = new HBox (  );
+            hBox.setAlignment (Pos.CENTER);
+            for (int j=0 ; j<8 ; j++){
+                Cell cell = new Cell (i,j);
+                cell.setPrefHeight (400);
+                cell.setPrefWidth (400);
+                cells[i][j]=cell;
+                hBox.getChildren ().add (cell);
+            }
+            gameStage.getChildren ().add (hBox);
+        }
 
         newGameBTN.setOnAction(event -> {
             setBlue(true);
-
-
 
         });
 
@@ -341,4 +349,5 @@ public class GamePageController implements Initializable {
 
         return false;
     }
+
 }
