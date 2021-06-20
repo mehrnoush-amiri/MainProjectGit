@@ -6,9 +6,8 @@ public class Cell extends Button {
     private boolean isChoosed;
     private boolean isBlue;
     private int x,y;
-    private boolean d;
-    private boolean e;
 
+    
 
 
     public Cell(int x, int y) {
