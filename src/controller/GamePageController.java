@@ -74,13 +74,56 @@ public class GamePageController implements Initializable {
 
         newGameBTN.setOnAction(event -> {
             setBlue(true);
+            firstColor(cells);
+            if (isTurn(cells, isBlue)) {
+                setVisiable(cells, isBlue);
+            }
 
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    Cell cell = cells[i][j];
+                    final int fi = i;
+                    final int fj = j;
+                    cell.setOnAction(event1 -> {
+
+                    });
+                }
+            }
         });
 
     }
 
 
 
+    //page start game
+    private void firstColor(Cell[][] cells){
+
+        for (int i=0;i<cells.length;i++){
+            for (int j=0;j< cells.length;j++){
+
+                cells[i][j].setDisable(true);
+                cells[i][j].setChoosed(false);
+                cells[i][j].setStyle("-fx-background-color: pink");
+
+            }
+        }
+        cells[3][3].setChoosed(true);
+        cells[3][3].setBlue(true);
+        cells[3][3].setDisable(false);
+        cells[3][3].setStyle("-fx-background-color: darkblue");
+        cells[4][4].setChoosed(true);
+        cells[4][4].setBlue(true);
+        cells[4][4].setDisable(false);
+        cells[4][4].setStyle("-fx-background-color: darkblue");
+        cells[3][4].setChoosed(true);
+        cells[3][4].setBlue(false);
+        cells[3][4].setDisable(false);
+        cells[3][4].setStyle("-fx-background-color: red");
+        cells[4][3].setBlue(false);
+        cells[4][3].setDisable(false);
+        cells[4][3].setStyle("-fx-background-color: red");
+        cells[4][3].setChoosed(true);
+    }
     //isturn for player
     private boolean isTurn(Cell[][] cells, boolean isBlue){
         for (int i=0;i<8;i++){
@@ -348,6 +391,238 @@ public class GamePageController implements Initializable {
         }
 
         return false;
+    }
+
+    //check all cells isVisiable
+    private void setVisiable(Cell[][] cells,boolean isBlue) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (cells[i][j].isChoosed() && cells[i][j].isBlue()==isBlue) {
+                    setVisColRight(cells,isBlue,i,j);
+
+                    setVisColLeft(cells,isBlue,i,j);
+
+                    setVisRowDown(cells,isBlue,i,j);
+
+                    setVisRowup(cells,isBlue,i,j);
+
+                    setVisbothDownRight(cells,isBlue,i,j);
+
+                    setVisbothUpLeft(cells,isBlue,i,j);
+
+                    setVisbothDownLeft(cells,isBlue,i,j);
+
+                    setVisbothUpRight(cells,isBlue,i,j);
+
+                }
+            }
+        }
+    }
+    //set visiable for each side
+    private void setVisRowDown(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if(i+1<8)
+                if (cells[i+1][j].isChoosed() && cells[i+1][j].isBlue()!=isBlue) {
+                    int changei=i+1;
+                    while (true){
+                        changei++;
+                        if (changei>7){
+                            break;
+                        }
+                        if (cells[changei][j].isBlue()==isBlue &&cells[changei][j].isChoosed()){
+                            break;
+                        }
+                        if (!cells[changei][j].isChoosed()){
+                            cells[changei][j].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    private void setVisRowup(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (i-1>-1)
+                if (cells[i-1][j].isChoosed() && cells[i-1][j].isBlue()!=isBlue) {
+                    int changei=i-1;
+                    while (true){
+                        changei--;
+                        if (changei<0){
+                            break;
+                        }
+                        if (cells[changei][j].isBlue()==isBlue && cells[changei][j].isChoosed()){
+                            break;
+                        }
+                        if (!cells[changei][j].isChoosed()){
+                            cells[changei][j].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    private void setVisColLeft(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (j-1>-1)
+                if (cells[i][j-1].isChoosed() && cells[i][j-1].isBlue()!=isBlue) {
+                    int changej=j-1;
+                    while (true){
+                        changej--;
+                        if (changej<0){
+                            break;
+                        }
+                        if (cells[i][changej].isBlue()==isBlue &&cells[i][changej].isChoosed()){
+                            break;
+                        }
+                        if (!cells[i][changej].isChoosed()){
+                            cells[i][changej].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    private void setVisColRight(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (j+1<8)
+                if (cells[i][j+1].isChoosed() && cells[i][j+1].isBlue()!=isBlue) {
+                    int changej=j+1;
+                    while (true){
+                        changej++;
+                        if (changej>7){
+                            break;
+                        }
+                        if (cells[i][changej].isBlue()==isBlue && cells[i][changej].isChoosed()){
+                            break;
+                        }
+                        if (!cells[i][changej].isChoosed()){
+                            cells[i][changej].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    private void setVisbothUpLeft(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (i-1>-1 && j-1>-1)
+                if (cells[i-1][j-1].isChoosed() && cells[i-1][j-1].isBlue()!=isBlue) {
+                    int changei=i-1;
+                    int changej=j-1;
+                    while (true){
+                        changei--;
+                        changej--;
+                        if (changei<0 || changej<0){
+                            break;
+                        }
+                        if (cells[changei][changej].isBlue()==isBlue && cells[changei][changej].isChoosed()){
+                            break;
+                        }
+                        if (!cells[changei][changej].isChoosed()){
+                            cells[changei][changej].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    private void setVisbothUpRight(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (i-1>-1 && j+1<8)
+                if (cells[i-1][j+1].isChoosed() && cells[i-1][j+1].isBlue()!=isBlue) {
+                    int changei=i-1;
+                    int changej=j+1;
+                    while (true){
+                        changei--;
+                        changej++;
+                        if (changei<0 || changej>7){
+                            break;
+                        }
+                        if (cells[changei][changej].isBlue()==isBlue && cells[changei][changej].isChoosed()){
+                            break;
+                        }
+                        if (!cells[changei][changej].isChoosed()){
+                            cells[changei][changej].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    private void setVisbothDownLeft(Cell[][] cells,boolean isBlue,int i,int j){
+
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (i+1<8 && j-1>-1)
+                if (cells[i+1][j-1].isChoosed() && cells[i+1][j-1].isBlue()!=isBlue) {
+                    int changei=i+1;
+                    int changej=j-1;
+                    while (true){
+                        changei++;
+                        changej--;
+                        if (changei>7 || changej<0){
+                            break;
+                        }
+                        if (cells[changei][changej].isBlue()==isBlue && cells[changei][changej].isChoosed()){
+                            break;
+                        }
+                        if (!cells[changei][changej].isChoosed()){
+                            cells[changei][changej].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+    }
+
+    private void setVisbothDownRight(Cell[][] cells,boolean isBlue,int i,int j){
+        if (cells[i][j].isChoosed() && cells[i][j].isBlue() == isBlue) {
+
+            if (i+1<8 && j+1<8)
+                if (cells[i+1][j+1].isChoosed() && cells[i+1][j+1].isBlue()!=isBlue) {
+                    int changei=i+1;
+                    int changej=j+1;
+                    while (true){
+                        changei++;
+                        changej++;
+                        if (changei>7 || changej>7){
+                            break;
+                        }
+                        if (cells[changei][changej].isBlue()==isBlue && cells[changei][changej].isChoosed()){
+                            break;
+                        }
+                        if (!cells[changei][changej].isChoosed()){
+                            cells[changei][changej].setDisable(false);
+                            break;
+                        }
+                    }
+                }
+        }
+
     }
 
 }
