@@ -75,7 +75,7 @@ public class GamePageController implements Initializable {
             }
             gameStage.getChildren ().add (hBox);
         }
-//color the stage
+//color the game stage
         split.setStyle("-fx-background-color: yellow");
         listViewBlue.setStyle("-fx-background-color: yellow");
         blueField.setStyle("-fx-background-color: skyblue");
