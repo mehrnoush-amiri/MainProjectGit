@@ -7,9 +7,6 @@ public class Cell extends Button {
     private boolean isBlue;
     private int x,y;
 
-    
-
-
     public Cell(int x, int y) {
         super(" ");
         this.x = x;
@@ -43,4 +40,6 @@ public class Cell extends Button {
     public void setBlue(boolean blue) {
         isBlue = blue;
     }
+
+
 }

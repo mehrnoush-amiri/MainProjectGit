@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +13,11 @@ public class Main extends Application {
         primaryStage.setTitle ("Reversi Game");
         primaryStage.setScene (new Scene (loader.getRoot ()));
         primaryStage.show ();
+
+        // primaryStage.setFullScreen (true);
+       // primaryStage.setFullScreenExitKeyCombination (KeyCombination.NO_MATCH);
+
+
 
 
     }

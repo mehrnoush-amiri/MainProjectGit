@@ -1,6 +1,4 @@
 package controller;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -8,12 +6,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Cell;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GamePageController implements Initializable {
 
+    @FXML
+    private TableView<?> tableview;
 
     @FXML
     private TableColumn<?, ?> blueTAB;
@@ -42,6 +41,8 @@ public class GamePageController implements Initializable {
     @FXML
     private Hyperlink player1BTN;
 
+    @FXML
+    private SplitPane split;
 
 
     private boolean isBlue;
@@ -71,8 +72,17 @@ public class GamePageController implements Initializable {
             }
             gameStage.getChildren ().add (hBox);
         }
+//color the stage
+        split.setStyle("-fx-background-color: yellow");
+        tableview.setStyle("-fx-background-color: yellow");
+        blueField.setStyle("-fx-background-color: skyblue");
+        redField.setStyle("-fx-background-color: pink");
+        blueTAB.setStyle("-fx-background-color: skyblue");
+        redTAB.setStyle("-fx-background-color: pink");
+
 
         newGameBTN.setOnAction(event -> {
+
             setBlue(true);
             firstColor(cells);
             if (isTurn(cells, isBlue)) {
@@ -152,12 +162,13 @@ public class GamePageController implements Initializable {
     //page start game
     private void firstColor(Cell[][] cells){
 
+
         for (int i=0;i<cells.length;i++){
             for (int j=0;j< cells.length;j++){
 
                 cells[i][j].setDisable(true);
                 cells[i][j].setChoosed(false);
-                cells[i][j].setStyle("-fx-background-color: pink");
+                cells[i][j].setStyle("-fx-background-color: silver");
 
             }
         }
