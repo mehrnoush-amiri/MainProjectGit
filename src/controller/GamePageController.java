@@ -11,14 +11,15 @@ import java.util.*;
 
 public class GamePageController implements Initializable {
 
-    @FXML
-    private TableView<?> tableview;
 
     @FXML
-    private TableColumn<?, ?> blueTAB;
+    private SplitPane split;
 
     @FXML
-    private TableColumn<?, ?> redTAB;
+    private ListView<Integer> listViewBlue;
+
+    @FXML
+    private ListView<Integer> listViewRed;
 
     @FXML
     private Label blueLBL;
@@ -33,16 +34,18 @@ public class GamePageController implements Initializable {
     private TextField redField;
 
     @FXML
-    private Hyperlink newGameBTN;
+    private Button newGameBTN;
+
+    @FXML
+    private Button player1BTN;
+
+    @FXML
+    private Button player2BTN;
 
     @FXML
     private VBox gameStage;
 
-    @FXML
-    private Hyperlink player1BTN;
 
-    @FXML
-    private SplitPane split;
 
 
     private boolean isBlue;
@@ -74,16 +77,20 @@ public class GamePageController implements Initializable {
         }
 //color the stage
         split.setStyle("-fx-background-color: yellow");
-        tableview.setStyle("-fx-background-color: yellow");
+        listViewBlue.setStyle("-fx-background-color: yellow");
         blueField.setStyle("-fx-background-color: skyblue");
         redField.setStyle("-fx-background-color: pink");
-        blueTAB.setStyle("-fx-background-color: skyblue");
-        redTAB.setStyle("-fx-background-color: pink");
+        listViewRed.setStyle("-fx-background-color: yellow");
+        //listViewBlueLBL.setStyle("-fx-background-color: skyblue");
+        //listViewRedLBL.setStyle("-fx-background-color: pink");
+
 
 
 
         //start new game
         newGameBTN.setOnAction(event -> {
+            redField.setText ("2");
+            blueField.setText ("2");
 
             setBlue(true);
             firstColor(cells);
@@ -115,6 +122,20 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
+                                int blue=0,red=0;
+                                    for (int l=0;l<8;l++){
+                                        for (int k=0;k<8;k++){
+                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                blue++;
+                                               blueField.setText(String.valueOf(blue));
+                                            }
+                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                               red++;
+                                               redField.setText(String.valueOf(red));
+                                            }
+
+                                        }
+                                    }
                                 //check turn
                                 if (isTurn(cells, false)) {
                                     setBlue(false);
@@ -131,6 +152,20 @@ public class GamePageController implements Initializable {
                                 cell.setStyle("-fx-background-color: red");
                                 cells[fi][fj] = cell;
                                 //change color in turn red
+                                int blue=0,red=0;
+                                    for (int l=0;l<8;l++){
+                                        for (int k=0;k<8;k++){
+                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                blue++;
+                                                blueField.setText(String.valueOf(blue));
+                                            }
+                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                                red++;
+                                                redField.setText(String.valueOf(red));
+                                            }
+
+                                        }
+                                    }
                                 betweenColorRowDown(fi, fj, isBlue(), cells);
                                 betweenColorRowUp(fi, fj, isBlue(), cells);
                                 betweenColorColLeft(fi, fj, isBlue(), cells);
@@ -155,7 +190,23 @@ public class GamePageController implements Initializable {
 
                         //check if is end of game
                         if (!isTurn(cells, true) && !isTurn(cells, false)){
-                            //change color of background
+                            int blue=0,red=0;
+                                    for (int l=0;l<8;l++){
+                                        for (int k=0;k<8;k++){
+                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                blue++;
+
+                                            }
+                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                                red++;
+
+                                            }
+
+                                        }
+                                    }
+                            listViewBlue.getItems ().add (0,blue);
+                            listViewRed.getItems ().add (0,red);
+
                         }
 
 
@@ -167,6 +218,8 @@ public class GamePageController implements Initializable {
 
         //play as player one with computer
         player1BTN.setOnAction(event -> {
+            blueField.setText ("2");
+            redField.setText ("2");
             setBlue(true);
 
             firstColor(cells);
@@ -197,6 +250,20 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
+                                int blue=0,red=0;
+                                    for (int l=0;l<8;l++){
+                                        for (int k=0;k<8;k++){
+                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                blue++;
+                                                blueField.setText(String.valueOf(blue));
+                                            }
+                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                                red++;
+                                                redField.setText(String.valueOf(red));
+                                            }
+
+                                        }
+                                    }
                                 //check turn
                                 if (isTurn(cells, false)){
                                     setBlue(false);
@@ -246,6 +313,20 @@ public class GamePageController implements Initializable {
                                         };
                                         Timer timer=new Timer();
                                         timer.schedule(task,2000);
+                                        int blue1=0,red1=0;
+                                    for (int l=0;l<8;l++){
+                                        for (int k=0;k<8;k++){
+                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                blue1++;
+                                                blueField.setText(String.valueOf(blue));
+                                            }
+                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                                red1++;
+                                                redField.setText(String.valueOf(red));
+                                            }
+
+                                        }
+                                    }
 
 
 
@@ -260,9 +341,23 @@ public class GamePageController implements Initializable {
                         }
 
                         if (!isTurn(cells, true) && !isTurn(cells, false)){
-                            //change color of background
-                        }
+                            int blue=0,red=0;
+                                    for (int l=0;l<8;l++){
+                                        for (int k=0;k<8;k++){
+                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                blue++;
 
+                                            }
+                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                                red++;
+
+                                            }
+
+                                        }
+                                    }
+                                    listViewBlue.getItems ().add (0,blue);
+                                    listViewRed.getItems ().add (0,red);
+                        }
 
                     });
                 }
