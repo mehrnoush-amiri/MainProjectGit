@@ -116,17 +116,101 @@ public class GamePageController implements Initializable {
             gameStage.getChildren ().add (hBox);
         }
 
-
         vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                gameStage.setPrefHeight (arg2.doubleValue ()/4);
+                gameStage.setPrefHeight (arg2.doubleValue ());
             }
         });
         vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                gameStage.setPrefWidth (arg2.doubleValue ()/4);
+                gameStage.setPrefWidth (arg2.doubleValue ());
+            }
+        });
+        /////////////////////
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueField.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueField.setPrefWidth (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redField.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redField.setPrefWidth (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueLBL.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueLBL.setPrefWidth (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redLBL.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redLBL.setPrefWidth (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                newGameBTN.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                newGameBTN.setPrefWidth (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player1BTN.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player1BTN.setPrefWidth (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player2BTN.setPrefHeight (arg2.doubleValue ()/8);
+            }
+        });
+        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player2BTN.setPrefWidth (arg2.doubleValue ()/8);
             }
         });
 
