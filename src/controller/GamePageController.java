@@ -596,17 +596,18 @@ public class GamePageController implements Initializable {
                                 for (int k=0;k<8;k++){
                                     if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
                                         blue1++;
-                                        listViewBlue.getItems ().add (0,blue1);
+
                                     }
                                     if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
                                         red1++;
-                                        listViewRed.getItems ().add (0,red1);
+
 
                                     }
 
                                 }
                             }
-
+                            listViewBlue.getItems ().add (0,blue1);
+                            listViewRed.getItems ().add (0,red1);
                         }
 
 
