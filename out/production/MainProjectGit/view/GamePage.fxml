@@ -23,7 +23,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="453.0" prefWidth="329.0">
+            <HBox fx:id="allListViewHbox" prefHeight="453.0" prefWidth="329.0">
                <children>
                   <ListView fx:id="listViewBlue" prefHeight="394.0" prefWidth="180.0" />
                   <ListView fx:id="listViewRed" prefHeight="394.0" prefWidth="172.0" />
@@ -73,7 +73,7 @@
                      <HBox.margin>
                         <Insets left="17.0" top="35.0" />
                      </HBox.margin>
-                         <children>
+                     <children>
                         <Button fx:id="newGameBTN" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" text=" Game">
                            <font>
                               <Font name="System Bold" size="13.0" />
@@ -112,8 +112,9 @@
             </HBox>
             <VBox fx:id="gameStage" prefHeight="279.0" prefWidth="361.0">
                <VBox.margin>
-                  <Insets left="30.0" right="30.0" />
-               </VBox.margin></VBox>
+                  <Insets bottom="20.0" left="60.0" right="60.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
          </children>
       </VBox>
   </items>

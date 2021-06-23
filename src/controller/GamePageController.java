@@ -62,6 +62,9 @@ public class GamePageController implements Initializable {
     @FXML
     private HBox hboxBTN;
 
+    @FXML
+    private HBox allListViewHbox;
+
 
 
 
