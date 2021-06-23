@@ -75,7 +75,7 @@ public class GamePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         Cell[][] cells=new Cell[8][8];
-//build cells in vbox
+///build cells in vbox
         VBox gameStage = new VBox (  );
         for (int i=0 ; i<8 ; i++){
             HBox hBox = new HBox (  );
