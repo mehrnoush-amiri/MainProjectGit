@@ -14,12 +14,6 @@ public class Main extends Application {
         primaryStage.setScene (new Scene (loader.getRoot ()));
         primaryStage.show ();
 
-        // primaryStage.setFullScreen (true);
-       // primaryStage.setFullScreenExitKeyCombination (KeyCombination.NO_MATCH);
-
-
-
-
     }
 
 }

@@ -22,7 +22,7 @@ public class GamePageController implements Initializable {
     private VBox vboxStage;
 
     @FXML
-    private AnchorPane anchorPaneView;
+    private VBox vboxView;
 
     @FXML
     private ListView<Integer> listViewBlue;
@@ -57,6 +57,12 @@ public class GamePageController implements Initializable {
     @FXML
     private Label listViewRedBTN;
 
+    @FXML
+    private VBox gameStage;
+
+    @FXML
+    private HBox hboxBTN;
+
 
 
 
@@ -76,8 +82,7 @@ public class GamePageController implements Initializable {
 
         Cell[][] cells=new Cell[8][8];
 ///build cells in vbox
-        VBox gameStage = new VBox (  );
-        vboxStage.getChildren ().add (gameStage);
+
         for (int i=0 ; i<8 ; i++){
             HBox hBox = new HBox (  );
 
@@ -129,91 +134,150 @@ public class GamePageController implements Initializable {
             }
         });
         /////////////////////
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueField.setPrefHeight (arg2.doubleValue ()/8);
+                hboxBTN.setPrefHeight (arg2.doubleValue ()/10);
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueField.setPrefWidth (arg2.doubleValue ()/8);
+                hboxBTN.setPrefWidth (arg2.doubleValue ()/10);
             }
         });
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redField.setPrefHeight (arg2.doubleValue ()/8);
+                blueField.setPrefHeight (arg2.doubleValue ()/10);
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redField.setPrefWidth (arg2.doubleValue ()/8);
+                blueField.setPrefWidth (arg2.doubleValue ()/32);
             }
         });
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueLBL.setPrefHeight (arg2.doubleValue ()/8);
+                redField.setPrefHeight (arg2.doubleValue ()/10);
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueLBL.setPrefWidth (arg2.doubleValue ()/8);
+                redField.setPrefWidth (arg2.doubleValue ()/32);
             }
         });
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redLBL.setPrefHeight (arg2.doubleValue ()/8);
+                blueLBL.setPrefHeight (arg2.doubleValue ());
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redLBL.setPrefWidth (arg2.doubleValue ()/8);
+                blueLBL.setPrefWidth (arg2.doubleValue ());
             }
         });
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                newGameBTN.setPrefHeight (arg2.doubleValue ()/8);
+                redLBL.setPrefHeight (arg2.doubleValue ());
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                newGameBTN.setPrefWidth (arg2.doubleValue ()/8);
+                redLBL.setPrefWidth (arg2.doubleValue ());
             }
         });
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player1BTN.setPrefHeight (arg2.doubleValue ()/8);
+                newGameBTN.setPrefHeight (arg2.doubleValue ()/2);
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player1BTN.setPrefWidth (arg2.doubleValue ()/8);
+                newGameBTN.setPrefWidth (arg2.doubleValue ()/7);
             }
         });
-        gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player2BTN.setPrefHeight (arg2.doubleValue ()/8);
+                player1BTN.setPrefHeight (arg2.doubleValue ()/2);
             }
         });
-        gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player2BTN.setPrefWidth (arg2.doubleValue ()/8);
+                player1BTN.setPrefWidth (arg2.doubleValue ()/7);
             }
         });
-
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player2BTN.setPrefHeight (arg2.doubleValue ()/2);
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player2BTN.setPrefWidth (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlue.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlue.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRed.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRed.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRedBTN.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRedBTN.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlueBTN.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlueBTN.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
 
 //color the game stage
         split.setStyle("-fx-background-color: yellow");
@@ -223,7 +287,6 @@ public class GamePageController implements Initializable {
         listViewRed.setStyle("-fx-background-color: yellow");
         listViewBlueBTN.setStyle("-fx-background-color: skyblue");
         listViewRedBTN.setStyle("-fx-background-color: pink");
-
 
         //start new game
         newGameBTN.setOnAction(event -> {

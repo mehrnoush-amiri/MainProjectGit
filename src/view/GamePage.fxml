@@ -6,33 +6,41 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="split" dividerPositions="0.30015082956259426" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
+<SplitPane fx:id="split" dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
   <items>
-    <AnchorPane fx:id="anchorPaneView" minHeight="0.0" minWidth="0.0" prefHeight="434.0" prefWidth="643.0">
+      <VBox fx:id="vboxView" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <ListView fx:id="listViewBlue" layoutY="26.0" prefHeight="408.0" prefWidth="100.0" />
-            <ListView fx:id="listViewRed" layoutX="98.0" layoutY="27.0" prefHeight="408.0" prefWidth="100.0" />
-            <Label fx:id="listViewBlueBTN" layoutX="1.0" prefHeight="25.0" prefWidth="99.0" text="         Blue">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="listViewRedBTN" layoutX="102.0" prefHeight="25.0" prefWidth="99.0" text="         Red">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
+            <HBox prefHeight="85.0" prefWidth="196.0">
+               <children>
+                  <Label fx:id="listViewRedBTN" alignment="CENTER" prefHeight="33.0" prefWidth="106.0" text="         Red           ">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="listViewBlueBTN" alignment="CENTER" prefHeight="35.0" prefWidth="98.0" text="         Blue       ">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="453.0" prefWidth="329.0">
+               <children>
+                  <ListView fx:id="listViewBlue" prefHeight="394.0" prefWidth="180.0" />
+                  <ListView fx:id="listViewRed" prefHeight="394.0" prefWidth="172.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
       <VBox fx:id="vboxStage" prefHeight="434.0" prefWidth="387.0">
          <children>
-            <VBox prefHeight="434.0" prefWidth="457.0">
+            <VBox prefHeight="434.0" prefWidth="360.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="452.0">
+                  <HBox fx:id="hboxBTN" prefHeight="100.0" prefWidth="452.0">
                      <children>
                         <VBox prefHeight="100.0" prefWidth="83.0">
                            <children>
@@ -73,16 +81,19 @@
                               <Insets left="17.0" top="35.0" />
                            </HBox.margin>
                            <children>
-                              <Button fx:id="newGameBTN" mnemonicParsing="false" text="New Game">
+                              <Button fx:id="newGameBTN" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" text=" Game">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
                               </Button>
                            </children>
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="80.0">
                            <children>
-                              <Button fx:id="player1BTN" mnemonicParsing="false" text="Player1">
+                              <Button fx:id="player1BTN" mnemonicParsing="false" prefHeight="29.0" prefWidth="78.0" text="Player1">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -92,7 +103,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        <VBox prefHeight="100.0" prefWidth="90.0">
+                        <VBox prefHeight="100.0" prefWidth="95.0">
                            <children>
                               <Button fx:id="player2BTN" mnemonicParsing="false" text="Player2">
                                  <font>
@@ -106,6 +117,11 @@
                         </VBox>
                      </children>
                   </HBox>
+                  <VBox fx:id="gameStage" prefHeight="279.0" prefWidth="361.0">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="60.0" right="60.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
             </VBox>
          </children>
