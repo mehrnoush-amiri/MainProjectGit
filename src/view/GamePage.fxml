@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="split" dividerPositions="1.0, 1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
+<SplitPane fx:id="split" dividerPositions="0.30015082956259426" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
   <items>
     <AnchorPane fx:id="anchorPaneView" minHeight="0.0" minWidth="0.0" prefHeight="434.0" prefWidth="643.0">
          <children>
@@ -28,83 +28,86 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <VBox prefHeight="434.0" prefWidth="387.0" />
-      <VBox prefHeight="434.0" prefWidth="232.0">
+      <VBox fx:id="vboxStage" prefHeight="434.0" prefWidth="387.0" spacing="5.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="452.0">
+            <VBox prefHeight="434.0" prefWidth="457.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="83.0">
+                  <HBox prefHeight="100.0" prefWidth="452.0">
                      <children>
-                        <Label fx:id="blueLBL" text="Blue : ">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="35.0" top="20.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="redLBL" text="Red : ">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="35.0" top="19.0" />
-                           </VBox.margin>
-                        </Label>
+                        <VBox prefHeight="100.0" prefWidth="83.0">
+                           <children>
+                              <Label fx:id="blueLBL" text="Blue : ">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="35.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="redLBL" text="Red : ">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="35.0" top="19.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="blueField">
+                                 <VBox.margin>
+                                    <Insets top="19.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="redField">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="94.0" prefWidth="88.0">
+                           <HBox.margin>
+                              <Insets left="17.0" top="35.0" />
+                           </HBox.margin>
+                           <children>
+                              <Button fx:id="newGameBTN" mnemonicParsing="false" text="New Game">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="80.0">
+                           <children>
+                              <Button fx:id="player1BTN" mnemonicParsing="false" text="Player1">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="35.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="90.0">
+                           <children>
+                              <Button fx:id="player2BTN" mnemonicParsing="false" text="Player2">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="35.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <TextField fx:id="blueField">
-                           <VBox.margin>
-                              <Insets top="19.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="redField">
-                           <VBox.margin>
-                              <Insets top="13.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="94.0" prefWidth="88.0">
-                     <HBox.margin>
-                        <Insets left="17.0" top="35.0" />
-                     </HBox.margin>
-                     <children>
-                        <Button fx:id="newGameBTN" mnemonicParsing="false" text="New Game">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="80.0">
-                     <children>
-                        <Button fx:id="player1BTN" mnemonicParsing="false" text="Player1">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="15.0" top="35.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="90.0">
-                     <children>
-                        <Button fx:id="player2BTN" mnemonicParsing="false" text="Player2">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="15.0" top="35.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
   </items>

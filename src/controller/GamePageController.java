@@ -19,7 +19,7 @@ public class GamePageController implements Initializable {
     private SplitPane split;
 
     @FXML
-    private AnchorPane anchorPaneStage;
+    private VBox vboxStage;
 
     @FXML
     private AnchorPane anchorPaneView;
@@ -77,7 +77,7 @@ public class GamePageController implements Initializable {
         Cell[][] cells=new Cell[8][8];
 ///build cells in vbox
         VBox gameStage = new VBox (  );
-        anchorPaneStage.getChildren ().add (gameStage);
+        vboxStage.getChildren ().add (gameStage);
         for (int i=0 ; i<8 ; i++){
             HBox hBox = new HBox (  );
 
@@ -117,13 +117,13 @@ public class GamePageController implements Initializable {
         }
 
 
-        anchorPaneStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+        vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 gameStage.setPrefHeight (arg2.doubleValue ()/4);
             }
         });
-        anchorPaneStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 gameStage.setPrefWidth (arg2.doubleValue ()/4);
