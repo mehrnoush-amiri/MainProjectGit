@@ -77,6 +77,7 @@ public class GamePageController implements Initializable {
         Cell[][] cells=new Cell[8][8];
 ///build cells in vbox
         VBox gameStage = new VBox (  );
+        anchorPaneStage.getChildren ().add (gameStage);
         for (int i=0 ; i<8 ; i++){
             HBox hBox = new HBox (  );
 
@@ -99,7 +100,6 @@ public class GamePageController implements Initializable {
                         cell.setPrefWidth (arg2.doubleValue ());
                     }
                 });
-                hBox.getChildren ().add (cell);
             }
             gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
                 @Override
@@ -120,21 +120,15 @@ public class GamePageController implements Initializable {
         anchorPaneStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                gameStage.setPrefHeight (arg2.doubleValue ());
+                gameStage.setPrefHeight (arg2.doubleValue ()/4);
             }
         });
         anchorPaneStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                gameStage.setPrefWidth (arg2.doubleValue ());
+                gameStage.setPrefWidth (arg2.doubleValue ()/4);
             }
         });
-
-
-
-
-
-
 
 
 //color the game stage
