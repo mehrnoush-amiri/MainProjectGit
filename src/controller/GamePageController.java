@@ -1,8 +1,11 @@
 package controller;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Cell;
@@ -14,6 +17,12 @@ public class GamePageController implements Initializable {
 
     @FXML
     private SplitPane split;
+
+    @FXML
+    private AnchorPane anchorPaneStage;
+
+    @FXML
+    private AnchorPane anchorPaneView;
 
     @FXML
     private ListView<Integer> listViewBlue;
@@ -43,12 +52,16 @@ public class GamePageController implements Initializable {
     private Button player2BTN;
 
     @FXML
-    private VBox gameStage;
+    private Label listViewBlueBTN;
+
+    @FXML
+    private Label listViewRedBTN;
 
 
 
 
     private boolean isBlue;
+
 
     public boolean isBlue() {
         return isBlue;
@@ -63,8 +76,10 @@ public class GamePageController implements Initializable {
 
         Cell[][] cells=new Cell[8][8];
 //build cells in vbox
+        VBox gameStage = new VBox (  );
         for (int i=0 ; i<8 ; i++){
             HBox hBox = new HBox (  );
+
             hBox.setAlignment (Pos.CENTER);
             for (int j=0 ; j<8 ; j++){
                 Cell cell = new Cell (i,j);
@@ -72,19 +87,64 @@ public class GamePageController implements Initializable {
                 cell.setPrefWidth (400);
                 cells[i][j]=cell;
                 hBox.getChildren ().add (cell);
+                hBox.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                        cell.setPrefHeight (arg2.doubleValue ());
+                    }
+                });
+                hBox.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                        cell.setPrefWidth (arg2.doubleValue ());
+                    }
+                });
+                hBox.getChildren ().add (cell);
             }
+            gameStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+                @Override
+                public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                    hBox.setPrefHeight (arg2.doubleValue ());
+                }
+            });
+            gameStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+                @Override
+                public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                    hBox.setPrefWidth (arg2.doubleValue ());
+                }
+            });
             gameStage.getChildren ().add (hBox);
         }
+
+
+        anchorPaneStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                gameStage.setPrefHeight (arg2.doubleValue ());
+            }
+        });
+        anchorPaneStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                gameStage.setPrefWidth (arg2.doubleValue ());
+            }
+        });
+
+
+
+
+
+
+
+
 //color the game stage
         split.setStyle("-fx-background-color: yellow");
         listViewBlue.setStyle("-fx-background-color: yellow");
         blueField.setStyle("-fx-background-color: skyblue");
         redField.setStyle("-fx-background-color: pink");
         listViewRed.setStyle("-fx-background-color: yellow");
-        //listViewBlueLBL.setStyle("-fx-background-color: skyblue");
-        //listViewRedLBL.setStyle("-fx-background-color: pink");
-
-
+        listViewBlueBTN.setStyle("-fx-background-color: skyblue");
+        listViewRedBTN.setStyle("-fx-background-color: pink");
 
 
         //start new game
@@ -152,20 +212,6 @@ public class GamePageController implements Initializable {
                                 cell.setStyle("-fx-background-color: red");
                                 cells[fi][fj] = cell;
                                 //change color in turn red
-                                int blue=0,red=0;
-                                    for (int l=0;l<8;l++){
-                                        for (int k=0;k<8;k++){
-                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                blue++;
-                                                blueField.setText(String.valueOf(blue));
-                                            }
-                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                                red++;
-                                                redField.setText(String.valueOf(red));
-                                            }
-
-                                        }
-                                    }
                                 betweenColorRowDown(fi, fj, isBlue(), cells);
                                 betweenColorRowUp(fi, fj, isBlue(), cells);
                                 betweenColorColLeft(fi, fj, isBlue(), cells);
@@ -175,6 +221,20 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
+                                int blue=0,red=0;
+                                for (int l=0;l<8;l++){
+                                    for (int k=0;k<8;k++){
+                                        if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                            blue++;
+                                            blueField.setText(String.valueOf(blue));
+                                        }
+                                        if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                            red++;
+                                            redField.setText(String.valueOf(red));
+                                        }
+
+                                    }
+                                }
                                 //check turn for blue
                                 if (isTurn(cells, true)) {
                                     setBlue(true);
@@ -318,11 +378,11 @@ public class GamePageController implements Initializable {
                                         for (int k=0;k<8;k++){
                                             if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
                                                 blue1++;
-                                                blueField.setText(String.valueOf(blue));
+                                                blueField.setText(String.valueOf(blue1));
                                             }
                                             if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
                                                 red1++;
-                                                redField.setText(String.valueOf(red));
+                                                redField.setText(String.valueOf(red1));
                                             }
 
                                         }
@@ -367,8 +427,6 @@ public class GamePageController implements Initializable {
 
 
     }
-
-
 
     //page start game
     private void firstColor(Cell[][] cells){
