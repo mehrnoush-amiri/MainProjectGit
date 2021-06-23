@@ -462,7 +462,20 @@ public class GamePageController implements Initializable {
                     Timer timer=new Timer();
                     timer.schedule(task,1000);
 
-////////
+                    int blue1=0,red1=0;
+                    for (int l=0;l<8;l++){
+                        for (int k=0;k<8;k++){
+                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                blue1++;
+                                blueField.setText(String.valueOf(blue1));
+                            }
+                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                red1++;
+                                redField.setText(String.valueOf(red1));
+                            }
+
+                        }
+                    }
 
 
                 }
@@ -493,7 +506,20 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
-////////////////////
+                                int blue1=0,red1=0;
+                                for (int l=0;l<8;l++){
+                                    for (int k=0;k<8;k++){
+                                        if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                            blue1++;
+                                            blueField.setText(String.valueOf(blue1));
+                                        }
+                                        if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                            red1++;
+                                            redField.setText(String.valueOf(red1));
+                                        }
+
+                                    }
+                                }
                                 if (isTurn(cells, true)) {
                                     setBlue(true);
                                     setVisiable(cells, isBlue());
@@ -538,9 +564,20 @@ public class GamePageController implements Initializable {
                                         };
                                         Timer timer=new Timer();
                                         timer.schedule(task,1000);
+                                        int blue=0,red=0;
+                                        for (int l=0;l<8;l++){
+                                            for (int k=0;k<8;k++){
+                                                if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                                    blue++;
+                                                    blueField.setText(String.valueOf(blue));
+                                                }
+                                                if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                                    red++;
+                                                    redField.setText(String.valueOf(red));
+                                                }
 
-/////////////////////////
-
+                                            }
+                                        }
                                     }
                                 } else {
                                     setBlue(false);
@@ -553,7 +590,22 @@ public class GamePageController implements Initializable {
 
                         if (!isTurn(cells, true) && !isTurn(cells, false)) {
 
-                            ////////////////////
+                            int blue1=0,red1=0;
+                            for (int l=0;l<8;l++){
+                                for (int k=0;k<8;k++){
+                                    if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                                        blue1++;
+                                        listViewBlue.getItems ().add (0,blue1);
+                                    }
+                                    if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                                        red1++;
+                                        listViewRed.getItems ().add (0,red1);
+
+                                    }
+
+                                }
+                            }
+
                         }
 
 
@@ -566,8 +618,6 @@ public class GamePageController implements Initializable {
 
 
     }
-
-
 
     private void responsive(){
         vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
