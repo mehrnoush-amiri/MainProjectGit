@@ -1,4 +1,5 @@
 package controller;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -121,163 +122,8 @@ public class GamePageController implements Initializable {
             gameStage.getChildren ().add (hBox);
         }
 
-        vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                gameStage.setPrefHeight (arg2.doubleValue ());
-            }
-        });
-        vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                gameStage.setPrefWidth (arg2.doubleValue ());
-            }
-        });
-        /////////////////////
-        vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                hboxBTN.setPrefHeight (arg2.doubleValue ()/10);
-            }
-        });
-        vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                hboxBTN.setPrefWidth (arg2.doubleValue ()/10);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueField.setPrefHeight (arg2.doubleValue ()/10);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueField.setPrefWidth (arg2.doubleValue ()/32);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redField.setPrefHeight (arg2.doubleValue ()/10);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redField.setPrefWidth (arg2.doubleValue ()/32);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueLBL.setPrefHeight (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueLBL.setPrefWidth (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redLBL.setPrefHeight (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redLBL.setPrefWidth (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                newGameBTN.setPrefHeight (arg2.doubleValue ()/2);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                newGameBTN.setPrefWidth (arg2.doubleValue ()/7);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player1BTN.setPrefHeight (arg2.doubleValue ()/2);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player1BTN.setPrefWidth (arg2.doubleValue ()/7);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player2BTN.setPrefHeight (arg2.doubleValue ()/2);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                player2BTN.setPrefWidth (arg2.doubleValue ()/7);
-            }
-        });
-        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewBlue.setPrefHeight (arg2.doubleValue ()/7);
-            }
-        });
-        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewBlue.setPrefWidth (arg2.doubleValue ()/2);
-            }
-        });
-        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewRed.setPrefHeight (arg2.doubleValue ()/7);
-            }
-        });
-        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewRed.setPrefWidth (arg2.doubleValue ()/2);
-            }
-        });
-        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewRedBTN.setPrefHeight (arg2.doubleValue ()/7);
-            }
-        });
-        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewRedBTN.setPrefWidth (arg2.doubleValue ()/2);
-            }
-        });
-        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewBlueBTN.setPrefHeight (arg2.doubleValue ()/7);
-            }
-        });
-        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewBlueBTN.setPrefWidth (arg2.doubleValue ()/2);
-            }
-        });
+
+        responsive();
 
 //color the game stage
         split.setStyle("-fx-background-color: yellow");
@@ -566,9 +412,322 @@ public class GamePageController implements Initializable {
 
         });
 
+        //play as plyer two
+        player2BTN.setOnAction(event -> {
+            setBlue(true);
+
+            firstColor(cells);
+
+            if (isTurn(cells, true)) {
+                setVisiable(cells, isBlue());
+                ArrayList<Cell> systemPlayerCells = new ArrayList<>();
+                for (int l = 0; l < 8; l++) {
+                    for (int k = 0; k < 8; k++) {
+                        if (!cells[l][k].isChoosed() && !cells[l][k].isDisabled()) {
+                            systemPlayerCells.add(cells[l][k]);
+                        }
+                    }
+                }
+                if (systemPlayerCells.size() > 0) {
+                    Random rand = new Random();
+
+                    int randNum=0;
+                    if(systemPlayerCells.size()>1)
+                        randNum = rand.nextInt(systemPlayerCells.size() - 1);
+
+                    cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()] =
+                            systemPlayerCells.get(randNum);
+                    cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setChoosed(true);
+                    cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setBlue(true);
+                    cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setStyle("-fx-background-color: darkblue");
+                    betweenColorRowDown(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorRowUp(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorColLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorColRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorDownRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorDownLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorUpLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                    betweenColorUpRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+
+                    TimerTask task=new TimerTask() {
+                        @Override
+                        public void run() {
+                            changeColor(cells);
+                            if (isTurn(cells, false)) {
+                                setBlue(false);
+                                setVisiable(cells, isBlue());
+                            }
+                        }
+                    };
+                    Timer timer=new Timer();
+                    timer.schedule(task,1000);
+
+////////
+
+
+                }
+            }
+
+
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    Cell cell = cells[i][j];
+                    final int fi = i;
+                    final int fj = j;
+
+                    cell.setOnAction(event1 -> {
+
+                        if (!cell.isDisabled() && !cell.isChoosed()) {
+
+                            if (!isBlue()) {
+                                cell.setChoosed(true);
+                                cell.setBlue(false);
+                                cell.setStyle("-fx-background-color: red");
+                                cells[fi][fj] = cell;
+                                betweenColorRowDown(fi, fj, isBlue(), cells);
+                                betweenColorRowUp(fi, fj, isBlue(), cells);
+                                betweenColorColLeft(fi, fj, isBlue(), cells);
+                                betweenColorColRight(fi, fj, isBlue(), cells);
+                                betweenColorDownRight(fi, fj, isBlue(), cells);
+                                betweenColorDownLeft(fi, fj, isBlue(), cells);
+                                betweenColorUpLeft(fi, fj, isBlue(), cells);
+                                betweenColorUpRight(fi, fj, isBlue(), cells);
+                                changeColor(cells);
+////////////////////
+                                if (isTurn(cells, true)) {
+                                    setBlue(true);
+                                    setVisiable(cells, isBlue());
+                                    ArrayList<Cell> systemPlayerCells = new ArrayList<>();
+                                    for (int l = 0; l < 8; l++) {
+                                        for (int k = 0; k < 8; k++) {
+                                            if (!cells[l][k].isChoosed() && !cells[l][k].isDisabled()) {
+                                                systemPlayerCells.add(cells[l][k]);
+                                            }
+                                        }
+                                    }
+                                    if (systemPlayerCells.size() > 0) {
+                                        Random rand = new Random();
+
+                                        int randNum=0;
+                                        if(systemPlayerCells.size()>1)
+                                            randNum = rand.nextInt(systemPlayerCells.size() - 1);
+
+                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()] =
+                                                systemPlayerCells.get(randNum);
+                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setChoosed(true);
+                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setBlue(true);
+                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setStyle("-fx-background-color: darkblue");
+                                        betweenColorRowDown(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorRowUp(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorColLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorColRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorDownRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorDownLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorUpLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                        betweenColorUpRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+
+                                        TimerTask task=new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                changeColor(cells);
+                                                if (isTurn(cells, false)) {
+                                                    setBlue(false);
+                                                    setVisiable(cells, isBlue());
+                                                }
+                                            }
+                                        };
+                                        Timer timer=new Timer();
+                                        timer.schedule(task,1000);
+
+/////////////////////////
+
+                                    }
+                                } else {
+                                    setBlue(false);
+                                    setVisiable(cells, isBlue());
+                                }
+                                //isblue bracket
+                            }
+
+                        }
+
+                        if (!isTurn(cells, true) && !isTurn(cells, false)) {
+
+                            ////////////////////
+                        }
+
+
+                    });
+
+                }
+
+            }
+        });
+
 
     }
 
+
+
+    private void responsive(){
+        vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                gameStage.setPrefHeight (arg2.doubleValue ());
+            }
+        });
+        vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                gameStage.setPrefWidth (arg2.doubleValue ());
+            }
+        });
+        /////////////////////
+        vboxStage.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                hboxBTN.setPrefHeight (arg2.doubleValue ()/10);
+            }
+        });
+        vboxStage.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                hboxBTN.setPrefWidth (arg2.doubleValue ()/10);
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueField.setPrefHeight (arg2.doubleValue ()/10);
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueField.setPrefWidth (arg2.doubleValue ()/32);
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redField.setPrefHeight (arg2.doubleValue ()/10);
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redField.setPrefWidth (arg2.doubleValue ()/32);
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueLBL.setPrefHeight (arg2.doubleValue ());
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                blueLBL.setPrefWidth (arg2.doubleValue ());
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redLBL.setPrefHeight (arg2.doubleValue ());
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                redLBL.setPrefWidth (arg2.doubleValue ());
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                newGameBTN.setPrefHeight (arg2.doubleValue ()/2);
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                newGameBTN.setPrefWidth (arg2.doubleValue ()/7);
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player1BTN.setPrefHeight (arg2.doubleValue ()/2);
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player1BTN.setPrefWidth (arg2.doubleValue ()/7);
+            }
+        });
+        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player2BTN.setPrefHeight (arg2.doubleValue ()/2);
+            }
+        });
+        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                player2BTN.setPrefWidth (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlue.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlue.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRed.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRed.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRedBTN.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewRedBTN.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlueBTN.setPrefHeight (arg2.doubleValue ()/7);
+            }
+        });
+        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlueBTN.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+    }
     //page start game
     private void firstColor(Cell[][] cells){
 
