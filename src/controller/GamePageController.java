@@ -312,11 +312,53 @@ public class GamePageController implements Initializable {
                                                 if (isTurn(cells, true)) {
                                                     setBlue(true);
                                                     setVisiable(cells, isBlue());
-                                                }
+                                                }else {
+                                                    setBlue(false);
+                                                    setVisiable(cells, isBlue());
+                                                    ArrayList<Cell> systemPlayerCells = new ArrayList<>();
+                                                    //find appropriate cells for system
+                                                    for (int l = 0; l < 8; l++) {
+                                                        for (int k = 0; k < 8; k++) {
+                                                            if (!cells[l][k].isChoosed() && !cells[l][k].isDisabled()) {
+                                                                systemPlayerCells.add(cells[l][k]);
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (systemPlayerCells.size() > 0) {
+                                                        Random rand = new Random();
+
+                                                        int randNum = 0;
+                                                        if (systemPlayerCells.size() > 1)
+                                                            randNum = rand.nextInt(systemPlayerCells.size() - 1);
+                                                        //change certain cell
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()] =
+                                                                systemPlayerCells.get(randNum);
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setChoosed(true);
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setBlue(false);
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setStyle("-fx-background-color: red");
+                                                        //change is blue in 8 side
+                                                        betweenColorRowDown(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorRowUp(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorColLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorColRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorDownRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorDownLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorUpLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorUpRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+
+                                                        changeColor(cells);
+                                                        blueField.setText(String.valueOf(blueNumber (cells)));
+                                                        redField.setText(String.valueOf(redNumber (cells)));
+                                                        setBlue(true);
+                                                        setVisiable(cells,isBlue());
+                                                    }
+                                                    }
+
                                             }
                                         };
                                         Timer timer=new Timer();
-                                        timer.schedule(task,2000);
+                                        timer.schedule(task,1000);
 
                                         ///count number of blue and red cells
                                         blueField.setText(String.valueOf(blueNumber (cells)));
@@ -471,7 +513,44 @@ public class GamePageController implements Initializable {
                                                 if (isTurn(cells, false)) {
                                                     setBlue(false);
                                                     setVisiable(cells, isBlue());
-                                                }
+                                                }else {
+                                                    setBlue(true);
+                                                    setVisiable(cells, isBlue());
+                                                    ArrayList<Cell> systemPlayerCells = new ArrayList<>();
+                                                    for (int l = 0; l < 8; l++) {
+                                                        for (int k = 0; k < 8; k++) {
+                                                            if (!cells[l][k].isChoosed() && !cells[l][k].isDisabled()) {
+                                                                systemPlayerCells.add(cells[l][k]);
+                                                            }
+                                                        }
+                                                    }
+                                                    if (systemPlayerCells.size() > 0) {
+                                                        Random rand = new Random();
+
+                                                        int randNum = 0;
+                                                        if (systemPlayerCells.size() > 1)
+                                                            randNum = rand.nextInt(systemPlayerCells.size() - 1);
+
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()] =
+                                                                systemPlayerCells.get(randNum);
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setChoosed(true);
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setBlue(true);
+                                                        cells[systemPlayerCells.get(randNum).getX()][systemPlayerCells.get(randNum).getY()].setStyle("-fx-background-color: darkblue");
+                                                        betweenColorRowDown(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorRowUp(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorColLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorColRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorDownRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorDownLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorUpLeft(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        betweenColorUpRight(systemPlayerCells.get(randNum).getX(), systemPlayerCells.get(randNum).getY(), isBlue(), cells);
+                                                        changeColor(cells);
+                                                        blueField.setText(String.valueOf(blueNumber (cells)));
+                                                        redField.setText(String.valueOf(redNumber (cells)));
+                                                        setBlue(false);
+                                                        setVisiable(cells,isBlue());
+                                                       }
+                                                    }
                                             }
                                         };
                                         Timer timer=new Timer();
@@ -493,8 +572,10 @@ public class GamePageController implements Initializable {
 
                         if (!isTurn(cells, true) && !isTurn(cells, false)) {
 
-                            listViewBlue.getItems ().add (0,blueNumber (cells));
-                            listViewRed.getItems ().add (0,blueNumber (cells));
+                                    listViewBlue.getItems ().add (0,blueNumber (cells));
+                                    listViewRed.getItems ().add (0,redNumber (cells));
+
+
                         }
 
                     });
