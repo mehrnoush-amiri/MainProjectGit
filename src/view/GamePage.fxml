@@ -25,15 +25,15 @@
             </HBox>
             <HBox fx:id="allListViewHbox" prefHeight="453.0" prefWidth="329.0">
                <children>
-                  <ListView fx:id="listViewRed" prefHeight="394.0" prefWidth="180.0" />
-                  <ListView fx:id="listViewBlue" prefHeight="394.0" prefWidth="172.0" />
+                  <ListView fx:id="listViewRed" prefHeight="600.0" prefWidth="180.0" />
+                  <ListView fx:id="listViewBlue" prefHeight="600.0" prefWidth="172.0" />
                </children>
             </HBox>
          </children>
       </VBox>
       <VBox fx:id="vboxStage" prefHeight="434.0" prefWidth="387.0">
          <children>
-            <HBox fx:id="hboxBTN" prefHeight="100.0" prefWidth="452.0">
+            <HBox fx:id="hboxBTN" alignment="CENTER" prefHeight="100.0" prefWidth="452.0" spacing="20.0">
                <children>
                   <VBox prefHeight="100.0" prefWidth="83.0">
                      <children>
@@ -69,45 +69,21 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="94.0" prefWidth="88.0">
-                     <HBox.margin>
-                        <Insets left="17.0" top="35.0" />
-                     </HBox.margin>
-                     <children>
-                        <Button fx:id="newGameBTN" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" text=" Game">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="80.0">
-                     <children>
-                        <Button fx:id="player1BTN" mnemonicParsing="false" prefHeight="29.0" prefWidth="78.0" text="Player1">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="15.0" top="35.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="95.0">
-                     <children>
-                        <Button fx:id="player2BTN" mnemonicParsing="false" text="Player2">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="15.0" top="35.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                  </VBox>
+                  <Button fx:id="newGameBTN" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" text=" Game">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="player1BTN" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" text="Player1">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="player2BTN" mnemonicParsing="false" text="Player2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
             <VBox fx:id="gameStage" prefHeight="279.0" prefWidth="361.0">

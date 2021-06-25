@@ -123,7 +123,7 @@ public class GamePageController implements Initializable {
             gameStage.getChildren ().add (hBox);
         }
 
-
+//make stage responsive
         responsive();
 
 //color the game stage
@@ -731,25 +731,38 @@ public class GamePageController implements Initializable {
                 player2BTN.setPrefWidth (arg2.doubleValue ()/7);
             }
         });
-        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+       vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewBlue.setPrefHeight (arg2.doubleValue ()/7);
+                allListViewHbox.setPrefHeight (arg2.doubleValue ());
             }
         });
         vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                allListViewHbox.setPrefWidth (arg2.doubleValue ()/2);
+            }
+        });
+        allListViewHbox.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                listViewBlue.setPrefHeight (arg2.doubleValue ());
+            }
+        });
+        allListViewHbox.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 listViewBlue.setPrefWidth (arg2.doubleValue ()/2);
             }
         });
-        vboxView.heightProperty ().addListener (new ChangeListener<Number> ( ) {
+
+        allListViewHbox.heightProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                listViewRed.setPrefHeight (arg2.doubleValue ()/7);
+                listViewRed.setPrefHeight (arg2.doubleValue ());
             }
         });
-        vboxView.widthProperty ().addListener (new ChangeListener<Number> ( ) {
+        allListViewHbox.widthProperty ().addListener (new ChangeListener<Number> ( ) {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 listViewRed.setPrefWidth (arg2.doubleValue ()/2);
