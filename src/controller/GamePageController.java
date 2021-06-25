@@ -170,20 +170,11 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
-                                int blue=0,red=0;
-                                    for (int l=0;l<8;l++){
-                                        for (int k=0;k<8;k++){
-                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                blue++;
-                                               blueField.setText(String.valueOf(blue));
-                                            }
-                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                               red++;
-                                               redField.setText(String.valueOf(red));
-                                            }
 
-                                        }
-                                    }
+                                ///count number of blue and red cells
+                                blueField.setText(String.valueOf(blueNumber (cells)));
+                                redField.setText(String.valueOf(redNumber (cells)));
+
                                 //check turn
                                 if (isTurn(cells, false)) {
                                     setBlue(false);
@@ -209,20 +200,11 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
-                                int blue=0,red=0;
-                                for (int l=0;l<8;l++){
-                                    for (int k=0;k<8;k++){
-                                        if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                            blue++;
-                                            blueField.setText(String.valueOf(blue));
-                                        }
-                                        if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                            red++;
-                                            redField.setText(String.valueOf(red));
-                                        }
 
-                                    }
-                                }
+                                ///count number of blue and red cells
+                                blueField.setText(String.valueOf(blueNumber (cells)));
+                                redField.setText(String.valueOf(redNumber (cells)));
+
                                 //check turn for blue
                                 if (isTurn(cells, true)) {
                                     setBlue(true);
@@ -235,34 +217,17 @@ public class GamePageController implements Initializable {
                             }
                         }
 
-
                         //check if is end of game
                         if (!isTurn(cells, true) && !isTurn(cells, false)){
-                            int blue=0,red=0;
-                                    for (int l=0;l<8;l++){
-                                        for (int k=0;k<8;k++){
-                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                blue++;
 
-                                            }
-                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                                red++;
-
-                                            }
-
-                                        }
-                                    }
-                            listViewBlue.getItems ().add (0,blue);
-                            listViewRed.getItems ().add (0,red);
+                            listViewBlue.getItems ().add (0,blueNumber (cells));
+                            listViewRed.getItems ().add (0,redNumber (cells));
 
                         }
-
-
                     });
                 }
             }
         });
-
 
         //play as player one with computer
         player1BTN.setOnAction(event -> {
@@ -298,20 +263,11 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
-                                int blue=0,red=0;
-                                    for (int l=0;l<8;l++){
-                                        for (int k=0;k<8;k++){
-                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                blue++;
-                                                blueField.setText(String.valueOf(blue));
-                                            }
-                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                                red++;
-                                                redField.setText(String.valueOf(red));
-                                            }
 
-                                        }
-                                    }
+                                ///count number of blue and red cells
+                                blueField.setText(String.valueOf(blueNumber (cells)));
+                                redField.setText(String.valueOf(redNumber (cells)));
+
                                 //check turn
                                 if (isTurn(cells, false)){
                                     setBlue(false);
@@ -361,22 +317,10 @@ public class GamePageController implements Initializable {
                                         };
                                         Timer timer=new Timer();
                                         timer.schedule(task,2000);
-                                        int blue1=0,red1=0;
-                                    for (int l=0;l<8;l++){
-                                        for (int k=0;k<8;k++){
-                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                blue1++;
-                                                blueField.setText(String.valueOf(blue1));
-                                            }
-                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                                red1++;
-                                                redField.setText(String.valueOf(red1));
-                                            }
 
-                                        }
-                                    }
-
-
+                                        ///count number of blue and red cells
+                                        blueField.setText(String.valueOf(blueNumber (cells)));
+                                        redField.setText(String.valueOf(redNumber (cells)));
 
                                     }
                                 }else {
@@ -389,22 +333,10 @@ public class GamePageController implements Initializable {
                         }
 
                         if (!isTurn(cells, true) && !isTurn(cells, false)){
-                            int blue=0,red=0;
-                                    for (int l=0;l<8;l++){
-                                        for (int k=0;k<8;k++){
-                                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                blue++;
 
-                                            }
-                                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                                red++;
+                                    listViewBlue.getItems ().add (0,blueNumber (cells));
+                                    listViewRed.getItems ().add (0,redNumber (cells));
 
-                                            }
-
-                                        }
-                                    }
-                                    listViewBlue.getItems ().add (0,blue);
-                                    listViewRed.getItems ().add (0,red);
                         }
 
                     });
@@ -463,21 +395,9 @@ public class GamePageController implements Initializable {
                     Timer timer=new Timer();
                     timer.schedule(task,1000);
 
-                    int blue1=0,red1=0;
-                    for (int l=0;l<8;l++){
-                        for (int k=0;k<8;k++){
-                            if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                blue1++;
-                                blueField.setText(String.valueOf(blue1));
-                            }
-                            if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                red1++;
-                                redField.setText(String.valueOf(red1));
-                            }
-
-                        }
-                    }
-
+                    ///count number of blue and red cells
+                    blueField.setText(String.valueOf(blueNumber (cells)));
+                    redField.setText(String.valueOf(redNumber (cells)));
 
                 }
             }
@@ -507,20 +427,11 @@ public class GamePageController implements Initializable {
                                 betweenColorUpLeft(fi, fj, isBlue(), cells);
                                 betweenColorUpRight(fi, fj, isBlue(), cells);
                                 changeColor(cells);
-                                int blue1=0,red1=0;
-                                for (int l=0;l<8;l++){
-                                    for (int k=0;k<8;k++){
-                                        if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                            blue1++;
-                                            blueField.setText(String.valueOf(blue1));
-                                        }
-                                        if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                            red1++;
-                                            redField.setText(String.valueOf(red1));
-                                        }
 
-                                    }
-                                }
+                                ///count number of blue and red cells
+                                blueField.setText(String.valueOf(blueNumber (cells)));
+                                redField.setText(String.valueOf(redNumber (cells)));
+
                                 if (isTurn(cells, true)) {
                                     setBlue(true);
                                     setVisiable(cells, isBlue());
@@ -565,20 +476,11 @@ public class GamePageController implements Initializable {
                                         };
                                         Timer timer=new Timer();
                                         timer.schedule(task,1000);
-                                        int blue=0,red=0;
-                                        for (int l=0;l<8;l++){
-                                            for (int k=0;k<8;k++){
-                                                if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                                    blue++;
-                                                    blueField.setText(String.valueOf(blue));
-                                                }
-                                                if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                                    red++;
-                                                    redField.setText(String.valueOf(red));
-                                                }
 
-                                            }
-                                        }
+                                        ///count number of blue and red cells
+                                        blueField.setText(String.valueOf(blueNumber (cells)));
+                                        redField.setText(String.valueOf(redNumber (cells)));
+
                                     }
                                 } else {
                                     setBlue(false);
@@ -591,25 +493,9 @@ public class GamePageController implements Initializable {
 
                         if (!isTurn(cells, true) && !isTurn(cells, false)) {
 
-                            int blue1=0,red1=0;
-                            for (int l=0;l<8;l++){
-                                for (int k=0;k<8;k++){
-                                    if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
-                                        blue1++;
-
-                                    }
-                                    if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
-                                        red1++;
-
-
-                                    }
-
-                                }
-                            }
-                            listViewBlue.getItems ().add (0,blue1);
-                            listViewRed.getItems ().add (0,red1);
+                            listViewBlue.getItems ().add (0,blueNumber (cells));
+                            listViewRed.getItems ().add (0,blueNumber (cells));
                         }
-
 
                     });
 
@@ -618,6 +504,34 @@ public class GamePageController implements Initializable {
             }
         });
 
+
+    }
+    private int blueNumber(Cell[][] cells){
+
+        int blue=0;
+        for (int l=0;l<8;l++){
+            for (int k=0;k<8;k++){
+                if (cells[l][k].isChoosed() && cells[l][k].isBlue() ){
+                    blue++;
+
+                }
+
+            }
+        }
+        return blue;
+    }
+    private int redNumber(Cell[][] cells){
+        int red=0;
+        for (int l=0;l<8;l++){
+            for (int k=0;k<8;k++){
+                if (cells[l][k].isChoosed() && !cells[l][k].isBlue() ){
+                    red++;
+
+                }
+
+            }
+        }
+        return red;
 
     }
 
@@ -645,54 +559,6 @@ public class GamePageController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 hboxBTN.setPrefWidth (arg2.doubleValue ()/10);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueField.setPrefHeight (arg2.doubleValue ()/10);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueField.setPrefWidth (arg2.doubleValue ()/32);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redField.setPrefHeight (arg2.doubleValue ()/10);
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redField.setPrefWidth (arg2.doubleValue ()/32);
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueLBL.setPrefHeight (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                blueLBL.setPrefWidth (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redLBL.setPrefHeight (arg2.doubleValue ());
-            }
-        });
-        hboxBTN.widthProperty ().addListener (new ChangeListener<Number> ( ) {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                redLBL.setPrefWidth (arg2.doubleValue ());
             }
         });
         hboxBTN.heightProperty ().addListener (new ChangeListener<Number> ( ) {
